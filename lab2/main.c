@@ -27,6 +27,15 @@ void initCarray(){
     for(i=0;i<Crows;i++) C[i] = malloc(Ccolumns*sizeof(double));
 }
 
+//checks the dimensions of the matrices A and B
+//to make sure they can be mutiplied
+void checkDimensions(){
+    if(Acolumns != Brows){
+        printf("given matrices can't be multiplied (Acolumns != Brows)\n");
+        exit(-1);
+    }
+}
+
 //make sure that A,B matrix file exist
 int validFiles(){
     if(access(pathA,F_OK) || access(pathB,F_OK))
@@ -243,6 +252,7 @@ int main (int argc, char *argv[]){
         exit(-1);
     }
     readFiles();
+    checkDimensions();
     initCarray();
     method1();
     writeCtoFile(1);
