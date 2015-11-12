@@ -16,7 +16,6 @@ station_init(struct station *station)
     pthread_cond_init(&station->passArrive , NULL);
     pthread_cond_init(&station->passBoarded, NULL);
     pthread_cond_init(&station->trainArrive, NULL);
-
 }
 
 void
